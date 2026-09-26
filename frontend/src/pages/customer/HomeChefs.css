@@ -1,0 +1,208 @@
+.homechefs-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.booking-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  resize: vertical;
+}
+
+.booking-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.availability-note {
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.availability-ok {
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success);
+}
+
+.availability-busy {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+  color: var(--color-primary-dark);
+}
+
+.booking-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  color: var(--color-success);
+}
+
+.booking-success-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.booking-success h3 {
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.booking-success p {
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Home Chef detail header ---------- */
+
+.chef-header {
+  align-items: center;
+  border-left: 4px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.12);
+}
+
+.chef-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chef-book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding: 0.75rem 1.4rem;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(249, 115, 22, 0.35);
+}
+
+/* ---------- Booking dialog (opens from "Book This Chef") ---------- */
+
+.booking-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(41, 37, 36, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 100;
+  overflow-y: auto;
+  animation: booking-overlay-fade 0.15s ease-out;
+}
+
+@keyframes booking-overlay-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.booking-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 92vh;
+  overflow-y: auto;
+  margin: auto;
+  padding: 1.5rem;
+  border-top: 4px solid var(--color-primary);
+  animation: booking-modal-in 0.18s ease-out;
+}
+
+@keyframes booking-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.booking-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.booking-modal-header h2 {
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.15rem;
+}
+
+.booking-modal-header p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.booking-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.booking-modal-close:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .chef-header {
+    border-left: none;
+    border-top: 4px solid var(--color-primary);
+  }
+
+  .chef-book-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .booking-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .booking-modal {
+    max-width: none;
+    max-height: 94vh;
+    border-radius: 14px 14px 0 0;
+    padding: 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-modal-overlay,
+  .booking-modal {
+    animation: none;
+  }
+}

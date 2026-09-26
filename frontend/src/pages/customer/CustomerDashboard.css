@@ -1,0 +1,157 @@
+.customer-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard-welcome h1 {
+  font-size: 1.75rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.35rem;
+}
+
+.dashboard-welcome p {
+  color: var(--color-text-muted);
+}
+
+.dashboard-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat-tile {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.stat-tile svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.dashboard-section-title {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 0.9rem;
+}
+
+.dashboard-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+
+.dashboard-section-header .dashboard-section-title {
+  margin-bottom: 0;
+}
+
+.dashboard-section-link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.dashboard-section-link:hover {
+  text-decoration: underline;
+}
+
+.dashboard-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.dashboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dashboard-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  gap: 1rem;
+}
+
+.list-item-title {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.list-item-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.list-item-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.list-item-amount {
+  font-weight: bold;
+}
+
+.dashboard-status-text,
+.dashboard-empty {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.dashboard-error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-danger);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-item-end {
+    align-items: flex-start;
+  }
+
+}

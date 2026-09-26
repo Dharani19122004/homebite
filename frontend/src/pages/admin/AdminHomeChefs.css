@@ -1,0 +1,68 @@
+.admin-chef-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.admin-chef-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.admin-chef-card:hover,
+.admin-chef-card-active {
+  border-color: var(--color-primary);
+}
+
+.admin-chef-card-active {
+  background-color: var(--color-primary-light);
+}
+
+.admin-chef-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.admin-chef-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.admin-chef-counts {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.admin-chef-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-chef-section {
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.admin-chef-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.05rem;
+  color: var(--color-primary-dark);
+}
+
+.admin-chef-section h4 {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}

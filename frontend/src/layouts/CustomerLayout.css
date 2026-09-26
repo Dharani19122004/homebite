@@ -1,0 +1,21 @@
+.customer-layout {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.customer-content {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .customer-layout {
+    flex-direction: column;
+  }
+
+  .customer-content {
+    padding: 1rem;
+  }
+}

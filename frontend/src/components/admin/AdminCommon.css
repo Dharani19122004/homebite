@@ -1,0 +1,220 @@
+/* Shared styles for all admin pages */
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.admin-refresh-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.admin-toolbar input,
+.admin-toolbar select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font-size: 0.92rem;
+}
+
+.admin-search {
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+}
+
+.admin-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.admin-tab {
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-text-muted);
+  font-weight: bold;
+  font-size: 0.88rem;
+}
+
+.admin-tab:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.admin-tab-active,
+.admin-tab-active:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.admin-result-count {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  padding: 0;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  /* keep columns readable and let the card scroll sideways instead of squeezing them */
+  .admin-table {
+    min-width: 640px;
+  }
+
+  .admin-table td {
+    white-space: nowrap;
+  }
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #fffdfa;
+}
+
+.admin-cell-main {
+  font-weight: bold;
+}
+
+.admin-cell-sub {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: normal;
+}
+
+.admin-cell-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.admin-action-btn {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.admin-action-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.admin-action-danger:hover {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+.admin-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.admin-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.admin-inline-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-white);
+  font-size: 0.82rem;
+}
+
+.admin-detail-row td {
+  background-color: var(--color-bg);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.admin-expand-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary-dark);
+  font-weight: bold;
+  font-size: 0.82rem;
+  padding: 0;
+}
+
+.admin-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: bold;
+}
+
+.admin-message-cell {
+  max-width: 320px;
+  white-space: normal;
+}
+
+@media (max-width: 480px) {
+  .admin-search {
+    max-width: none;
+    width: 100%;
+  }
+}

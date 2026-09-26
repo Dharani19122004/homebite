@@ -1,0 +1,35 @@
+.food-rescue-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.food-rescue-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.food-rescue-add-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .food-rescue-header-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .food-rescue-add-btn {
+    width: 100%;
+  }
+}
+
+.food-rescue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+}

@@ -1,0 +1,154 @@
+/* Shared styles for the simple public pages (About, Contact). */
+
+.pub-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pub-hero {
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 100%);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3.25rem 0 2.75rem;
+  text-align: center;
+}
+
+.pub-hero h1 {
+  font-size: 2.2rem;
+  color: var(--color-text);
+  margin-bottom: 0.6rem;
+}
+
+.pub-hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.pub-section {
+  padding: 3rem 0;
+}
+
+.pub-section-alt {
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.pub-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.pub-lead {
+  color: var(--color-text-muted);
+  max-width: 720px;
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+}
+
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.pub-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.pub-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.pub-card {
+  padding: 1.5rem;
+}
+
+.pub-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  margin-bottom: 0.9rem;
+}
+
+.pub-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.pub-card p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.pub-card a.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.pub-card a.pub-link:hover {
+  text-decoration: underline;
+}
+
+.pub-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  background-color: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  border-radius: var(--radius);
+  color: var(--color-warning);
+  line-height: 1.5;
+}
+
+.pub-notice svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pub-notice strong {
+  display: block;
+  color: var(--color-text);
+  margin-bottom: 0.15rem;
+}
+
+@media (max-width: 1000px) {
+  .pub-grid,
+  .pub-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .pub-grid,
+  .pub-grid-2,
+  .pub-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .pub-hero {
+    padding: 2.25rem 0 2rem;
+  }
+
+  .pub-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .pub-section {
+    padding: 2.25rem 0;
+  }
+}

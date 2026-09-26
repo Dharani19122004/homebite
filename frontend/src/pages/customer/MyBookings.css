@@ -1,0 +1,93 @@
+.my-bookings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.booking-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.booking-card-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.booking-card-summary:hover {
+  background-color: var(--color-bg);
+}
+
+.booking-summary-main h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.booking-card-type {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.booking-summary-end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.booking-card-details {
+  padding: 1.1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  border-top: 1px solid var(--color-border);
+  animation: order-details-expand 0.2s ease-out;
+}
+
+.booking-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.65rem 0;
+}
+
+.booking-card-meta p {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+.booking-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .booking-card-summary {
+    padding: 1rem;
+  }
+
+  .booking-card-details {
+    padding: 1rem;
+  }
+}

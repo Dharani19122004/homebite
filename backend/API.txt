@@ -1,0 +1,77 @@
+1.create customer
+/api/auth/register post
+
+{
+  "name": "Dharani",
+  "email": "dharani@example.com",
+  "phone": "9876543210",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "role": "customer"
+}
+
+{
+  "name": "ABC Foods",
+  "email": "vendor@example.com",
+  "phone": "9876543211",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "role": "vendor"
+}
+
+{
+  "name": "Anu",
+  "email": "anu@example.com",
+  "phone": "9876543212",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "role": "homechef"
+}
+{
+  "name": "Ravi",
+  "email": "ravi@example.com",
+  "phone": "9876543213",
+  "password": "123456",
+  "confirmPassword": "123456",
+  "role": "delivery_partner"
+}
+
+2.Login post
+/api/auth/login
+
+{
+  "email": "dharani@example.com",
+  "password": "123456",
+  "role": "customer"
+}
+
+{
+  "email": "vendor@example.com",
+  "password": "123456",
+  "role": "vendor"
+}
+
+3.Profile /api/auth/profile Get
+
+4.Forgot Password /api/auth/forgot-password
+{
+  "email": "dharani@example.com",
+  "role": "customer"
+}
+
+POST /api/auth/verify-otp
+{
+  "email": "dharani@example.com",
+  "role": "customer",
+  "otp": "123456"
+}
+
+POST /api/auth/reset-password
+
+{
+  "email": "dharani@example.com",
+  "role": "customer",
+  "otp": "123456",
+  "newPassword": "newpassword",
+  "confirmPassword": "newpassword"
+}

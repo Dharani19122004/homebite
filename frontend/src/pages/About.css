@@ -1,0 +1,15 @@
+.about-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.about-actions .btn {
+  padding: 0.75rem 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .about-actions .btn {
+    flex: 1;
+  }
+}

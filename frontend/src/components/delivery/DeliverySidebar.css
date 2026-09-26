@@ -1,0 +1,55 @@
+.delivery-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.9rem 0.75rem 0;
+  padding: 0.8rem;
+  border-radius: var(--radius);
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-border);
+}
+
+.delivery-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.delivery-profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.delivery-profile-info strong {
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delivery-profile-info span {
+  font-size: 0.78rem;
+  color: var(--color-primary-dark);
+}
+
+.delivery-profile-email {
+  color: var(--color-text-muted) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .delivery-profile-card {
+    display: none;
+  }
+}

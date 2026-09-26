@@ -1,0 +1,13 @@
+.login-links {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.9rem;
+}
+
+.login-links a {
+  color: var(--color-primary-dark);
+}
+
+.login-links a:hover {
+  text-decoration: underline;
+}

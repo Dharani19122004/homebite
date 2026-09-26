@@ -1,0 +1,346 @@
+.chatbot-page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.chatbot {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 820px;
+  height: min(82vh, 720px);
+  min-height: 480px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  font-family: var(--font-main);
+}
+
+/* ---------- Header ---------- */
+
+.chatbot-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.chatbot-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chatbot-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.chatbot-header-text h1 {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--color-white);
+}
+
+.chatbot-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  opacity: 0.95;
+}
+
+.chatbot-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4ade80;
+}
+
+.chatbot-clear {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: bold;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.chatbot-clear:hover {
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Conversation ---------- */
+
+.chatbot-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.1rem;
+  overflow-y: auto;
+  background-color: var(--color-bg);
+}
+
+.chat-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+  max-width: 85%;
+  animation: chat-appear 0.22s ease-out;
+}
+
+.chat-row-user {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+@keyframes chat-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-primary-tint);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chat-avatar-user {
+  background-color: var(--color-text);
+  color: var(--color-white);
+}
+
+.chat-bubble {
+  padding: 0.65rem 0.9rem;
+  border-radius: 14px 14px 14px 4px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.chat-bubble-user {
+  border-radius: 14px 14px 4px 14px;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* ---------- Suggestions (inside the conversation) ---------- */
+
+.chat-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-left: calc(30px + 0.55rem);
+  animation: chat-appear 0.22s ease-out;
+}
+
+.chat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.chat-tray-prompt {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--color-text-muted);
+}
+
+.chat-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chat-chip {
+  font-family: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 999px;
+  background-color: var(--color-white);
+  color: var(--color-primary-dark);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.chat-chip:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.chat-chip-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chat-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 0.2rem;
+}
+
+.chat-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: bold;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-white);
+  color: var(--color-text-muted);
+}
+
+.chat-action:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
+}
+
+.chat-noresults {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  color: var(--color-primary);
+}
+
+/* ---------- Footer ---------- */
+
+.chatbot-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 1.1rem 0.85rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.chatbot-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+}
+
+.chatbot-search:focus-within {
+  outline: 2px solid var(--color-primary);
+}
+
+.chatbot-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: inherit;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.chatbot-search-clear {
+  display: flex;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--color-text-muted);
+}
+
+.chatbot-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+  /* The site top bar and the sidebar row take ~190px above the chat on
+     mobile, so size the chat to what is left of the viewport. */
+  .chatbot {
+    height: calc(100vh - 215px);
+    height: calc(100dvh - 215px);
+    min-height: 400px;
+    border-radius: 10px;
+  }
+
+  .chatbot-header {
+    padding: 0.7rem 0.8rem;
+  }
+
+  .chatbot-clear {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .chatbot-body {
+    padding: 0.8rem;
+  }
+
+  .chat-row {
+    max-width: 94%;
+  }
+
+  .chat-tray {
+    padding-left: 0;
+  }
+
+  .chatbot-footer {
+    padding: 0.6rem 0.8rem 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-row,
+  .chat-tray {
+    animation: none;
+  }
+}

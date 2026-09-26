@@ -1,0 +1,264 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.cart-items {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 48px 1fr auto auto auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.cart-item-image {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item-info h3 {
+  font-size: 0.95rem;
+}
+
+.cart-item-info span {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.cart-item-quantity-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-item-quantity button {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cart-item-quantity button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.cart-item-quantity button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cart-item-quantity span {
+  min-width: 1.2rem;
+  text-align: center;
+}
+
+.cart-item-stock-hint {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.cart-item-stock-max {
+  color: var(--color-primary-dark);
+  font-weight: bold;
+}
+
+.cart-item-subtotal {
+  font-weight: bold;
+  min-width: 60px;
+  text-align: right;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+}
+
+.cart-item-remove:hover {
+  color: var(--color-danger);
+}
+
+.cart-clear-btn {
+  align-self: flex-start;
+}
+
+.cart-summary {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  position: sticky;
+  top: 1rem;
+}
+
+.cart-summary textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  resize: vertical;
+}
+
+.payment-method-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.payment-method-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.payment-method-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-weight: normal;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.payment-method-option:hover {
+  border-color: var(--color-primary);
+}
+
+.payment-method-option-active {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg);
+}
+
+/*
+The shared .form-group input rule (AuthLayout.css) applies width:100%,
+padding and a border to every <input> inside a .form-group, including
+these radio buttons, which is what was stretching them full-width and
+pushing the labels away. Reset that here without touching the shared
+rule, since it's still needed for the delivery-address textarea's
+sibling text inputs elsewhere in the app.
+*/
+.payment-method-options input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  accent-color: var(--color-primary);
+}
+
+.cart-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.85rem;
+}
+
+.cart-totals > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.cart-grand-total {
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: var(--color-text) !important;
+}
+
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-item {
+    grid-template-columns: 40px 1fr;
+    grid-template-areas:
+      "image info"
+      "quantity quantity"
+      "subtotal remove";
+    row-gap: 0.5rem;
+  }
+
+  .cart-item-image {
+    grid-area: image;
+  }
+
+  .cart-item-info {
+    grid-area: info;
+  }
+
+  .cart-item-quantity {
+    grid-area: quantity;
+  }
+
+  .cart-item-subtotal {
+    grid-area: subtotal;
+    text-align: left;
+  }
+
+  .cart-item-remove {
+    grid-area: remove;
+    justify-self: end;
+  }
+}

@@ -1,0 +1,27 @@
+/* Shared status pills, used through getStatusBadgeClass() in utils/status.js. */
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.status-progress {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.status-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.status-danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+

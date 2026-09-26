@@ -1,0 +1,128 @@
+.vendor-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.catalog-header h1 {
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.3rem;
+}
+
+.catalog-header p {
+  color: var(--color-text-muted);
+}
+
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.1rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+
+.catalog-status-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+}
+
+.catalog-error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-danger);
+}
+
+.catalog-empty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-muted);
+  padding: 1.5rem 0;
+}
+
+.catalog-notice {
+  background-color: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  color: var(--color-success);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.catalog-back-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--color-primary-dark);
+  font-weight: bold;
+}
+
+.catalog-back-link:hover {
+  text-decoration: underline;
+}
+
+.catalog-section-title {
+  font-size: 1.15rem;
+  margin-top: 0.5rem;
+}
+
+.vendor-detail-header {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  align-items: flex-start;
+}
+
+.vendor-detail-image {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.vendor-detail-header h1 {
+  font-size: 1.35rem;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+}
+
+.vendor-detail-meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.vendor-detail-description {
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .vendor-detail-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

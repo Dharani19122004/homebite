@@ -1,0 +1,225 @@
+.dac-card {
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  font-family: var(--font-main);
+}
+
+.dac-card:last-child {
+  border-bottom: none;
+}
+
+.dac-card-unread {
+  background-color: var(--color-primary-light);
+  border-left: 3px solid var(--color-primary);
+}
+
+.dac-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+  color: var(--color-text);
+  font-family: inherit;
+}
+
+.dac-header:hover {
+  background-color: var(--color-bg);
+}
+
+.dac-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dac-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.dac-title {
+  font-size: 0.92rem;
+  font-weight: bold;
+}
+
+.dac-subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dac-unread {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 0.68rem;
+  font-weight: bold;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+}
+
+.dac-body {
+  padding: 0 1rem 1rem;
+}
+
+.dac-message {
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.7rem;
+}
+
+.dac-details {
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.dac-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dac-row:last-child {
+  border-bottom: none;
+}
+
+.dac-row dt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.dac-row dd {
+  margin: 0;
+  font-weight: bold;
+  text-align: right;
+  word-break: break-word;
+}
+
+.dac-row a {
+  color: var(--color-primary-dark);
+}
+
+.dac-status {
+  display: inline-block;
+  background-color: var(--color-primary-tint);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary-border);
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+.dac-status-delivered {
+  background-color: #dcfce7;
+  border-color: var(--color-success-border);
+  color: var(--color-success);
+}
+
+.dac-status-cancelled {
+  background-color: #fee2e2;
+  border-color: var(--color-danger-border);
+  color: var(--color-danger);
+}
+
+.dac-otp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background-color: var(--color-primary-light);
+  border: 1px dashed var(--color-primary);
+  border-radius: var(--radius);
+}
+
+.dac-otp-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.dac-otp-code {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 0.4em;
+  padding-left: 0.4em;
+  color: var(--color-text);
+}
+
+.dac-otp-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.dac-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.dac-time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.dac-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.dac-link {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+.dac-link:hover {
+  text-decoration: underline;
+}
+
+.dac-read {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}

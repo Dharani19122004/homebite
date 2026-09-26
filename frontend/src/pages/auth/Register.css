@@ -1,0 +1,56 @@
+.register-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.vendor-fields {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.1rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.vendor-fields-title {
+  font-size: 1.05rem;
+  color: var(--color-primary-dark);
+}
+
+.file-field {
+  position: relative;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.85rem;
+  color: var(--color-text-muted);
+  background-color: var(--color-white);
+}
+
+.file-input-label:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+@media (max-width: 480px) {
+  .register-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}
