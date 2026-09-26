@@ -13,9 +13,29 @@ const {
 } = require("../controllers/authController");
 
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
+
+// Vendors register with a shop photo (multipart form); other roles send plain
+// JSON, which passes straight through this middleware. Upload problems are
+// reported as a clear 400 instead of a server error.
+const optionalImageUpload = (req, res, next) => {
+  upload.single("image")(req, res, (error) => {
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        message:
+          error.code === "LIMIT_FILE_SIZE"
+            ? "Image must be 5 MB or smaller"
+            : error.message,
+      });
+    }
+
+    next();
+  });
+};
 
 // REGISTER
-router.post("/register", register);
+router.post("/register", optionalImageUpload, register);
 
 // LOGIN
 router.post("/login", login);
