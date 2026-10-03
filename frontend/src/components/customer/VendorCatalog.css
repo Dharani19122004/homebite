@@ -88,7 +88,8 @@
   width: 110px;
   height: 110px;
   border-radius: var(--radius);
-  object-fit: cover;
+  object-fit: contain;
+  background-color: var(--color-bg);
   flex-shrink: 0;
 }
 
