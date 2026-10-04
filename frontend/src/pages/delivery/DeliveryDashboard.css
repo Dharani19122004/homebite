@@ -87,6 +87,17 @@
   border-bottom: none;
 }
 
+.delivery-current-list li > div {
+  min-width: 0;
+}
+
+.delivery-report-list .admin-cell-sub:first-of-type {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @media (max-width: 900px) {
   .delivery-columns {
     grid-template-columns: 1fr;

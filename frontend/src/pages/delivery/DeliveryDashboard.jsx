@@ -7,11 +7,13 @@ import {
   ListChecks,
   Star,
   ClipboardList,
+  Flag,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useLoader } from "../../hooks/useLoader";
 import { getPartnerDeliveries } from "../../services/deliveryService";
 import { getDeliveryPartnerRatings } from "../../services/ratingService";
+import { getDeliveryPartnerReports } from "../../services/reportService";
 import { summarizeDeliveries, IN_PROGRESS, deliveryShortId } from "../../utils/deliveryStatus";
 import { formatDateTime } from "../../utils/adminFormat";
 import { formatStatusLabel, getStatusBadgeClass } from "../../utils/status";
@@ -20,6 +22,14 @@ import AdminDataState from "../../components/admin/AdminDataState";
 import "./DeliveryDashboard.css";
 
 const ERROR_MESSAGE = "Unable to load your delivery activity.";
+
+// Same convention as VendorFeedback / AdminFeedback: a report is only ever
+// "resolved" (success) or "rejected" (danger); pending/reviewed stay neutral.
+function reportStatusClass(status) {
+  if (status === "resolved") return "status-badge status-success";
+  if (status === "rejected") return "status-badge status-danger";
+  return "status-badge status-progress";
+}
 
 function StatCard({ Icon, label, value, note }) {
   return (
@@ -38,11 +48,12 @@ function DeliveryDashboard() {
   const { user } = useAuth();
 
   const fetchActivity = useCallback(async () => {
-    const [deliveries, ratings] = await Promise.all([
+    const [deliveries, ratings, reports] = await Promise.all([
       getPartnerDeliveries(user.id).then((r) => r.data.deliveries),
       getDeliveryPartnerRatings(user.id).then((r) => r.data.ratings),
+      getDeliveryPartnerReports(user.id).then((r) => r.data.reports),
     ]);
-    return { deliveries, ratings };
+    return { deliveries, ratings, reports };
   }, [user.id]);
 
   const { data, loading, refreshing, error, reload } = useLoader(
@@ -178,6 +189,38 @@ function DeliveryDashboard() {
                 )}
               </section>
             </div>
+
+            <section className="card delivery-panel">
+              <h3>
+                <Flag size={16} style={{ verticalAlign: "-2px" }} /> Customer
+                Reports
+              </h3>
+              {data.reports.length === 0 ? (
+                <p className="admin-hint">
+                  No reports have been filed against you.
+                </p>
+              ) : (
+                <ul className="delivery-current-list delivery-report-list">
+                  {data.reports.map((r) => (
+                    <li key={r._id}>
+                      <div>
+                        <strong>{r.subject}</strong>
+                        <span className="admin-cell-sub">
+                          {r.message}
+                        </span>
+                        <span className="admin-cell-sub">
+                          {r.customerId?.name || "Customer"} &bull;{" "}
+                          {formatDateTime(r.createdAt)}
+                        </span>
+                      </div>
+                      <span className={reportStatusClass(r.status)}>
+                        {formatStatusLabel(r.status)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
           </>
         )}
       </AdminDataState>
