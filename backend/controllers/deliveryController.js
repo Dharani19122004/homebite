@@ -2,31 +2,7 @@ const mongoose = require("mongoose");
 const Delivery = require("../models/Delivery");
 const Order = require("../models/order");
 const User = require("../models/User");
-const Notification = require("../models/Notification");
-const crypto = require("crypto");
-
-// =====================================================
-// GENERATE 4 DIGIT DELIVERY OTP (cryptographically secure)
-// =====================================================
-
-const generateDeliveryOtp = () => crypto.randomInt(1000, 10000).toString();
-
-// =====================================================
-// ESTIMATED ARRIVAL WINDOW (minutes after assignment)
-// Configurable via DELIVERY_ETA_MIN_MINUTES / DELIVERY_ETA_MAX_MINUTES.
-// This is a fixed window, not a live GPS estimate.
-// =====================================================
-
-const readMinutes = (value, fallback) => {
-  const n = Number.parseInt(value, 10);
-  return Number.isFinite(n) && n > 0 ? n : fallback;
-};
-
-const getEtaWindow = () => {
-  const min = readMinutes(process.env.DELIVERY_ETA_MIN_MINUTES, 25);
-  const max = readMinutes(process.env.DELIVERY_ETA_MAX_MINUTES, 35);
-  return { min: Math.min(min, max), max: Math.max(min, max) };
-};
+const { applyPartnerAssignment } = require("../services/deliveryAssignmentService");
 
 // =====================================================
 // OWNERSHIP HELPERS
@@ -255,79 +231,10 @@ const assignDeliveryPartner = async (req, res) => {
       });
     }
 
-    const assignedAt = new Date();
-
-    const eta = getEtaWindow();
-
-    const expectedArrivalAt = new Date(
-      assignedAt.getTime() + eta.max * 60 * 1000,
-    );
-
-    // Reuse an existing OTP for this delivery; only generate when missing.
-    const deliveryOtp = delivery.deliveryOtp || generateDeliveryOtp();
-
-    // =================================================
-    // UPDATE DELIVERY
-    // =================================================
-
-    delivery.deliveryPartnerId = deliveryPartner._id;
-    delivery.deliveryStatus = "assigned";
-    delivery.assignedAt = assignedAt;
-    delivery.expectedArrivalAt = expectedArrivalAt;
-    delivery.deliveryOtp = deliveryOtp;
-    delivery.otpVerified = false;
-    delivery.otpVerifiedAt = null;
-
-    await delivery.save();
-
-    // =================================================
-    // CREATE CUSTOMER NOTIFICATION
-    // =================================================
-
-    const notificationProducts = order.items.map((item) => ({
-      name: item.name,
-      quantity: item.quantity,
-      price: item.price,
-      subtotal: item.subtotal,
-    }));
-
-    // The assignment is already saved. A notification failure must not undo
-    // it, and $setOnInsert on (deliveryId, type) prevents duplicates.
-    try {
-      await Notification.findOneAndUpdate(
-        { deliveryId: delivery._id, type: "delivery_assigned" },
-        {
-          $setOnInsert: {
-            customerId: delivery.customerId,
-            orderId: order._id,
-            deliveryId: delivery._id,
-            type: "delivery_assigned",
-
-            title: "Delivery Partner Assigned 🚚",
-
-            message:
-              "Your HomeBite order has been assigned to a delivery partner. Your delivery is on the way to being prepared for delivery.",
-
-            products: notificationProducts,
-            totalAmount: order.totalAmount,
-
-            deliveryPartnerId: deliveryPartner._id,
-            deliveryPartnerName: deliveryPartner.name || "Delivery Partner",
-            deliveryPartnerPhone: deliveryPartner.phone || "",
-
-            expectedArrivalAt,
-            etaMinMinutes: eta.min,
-            etaMaxMinutes: eta.max,
-
-            deliveryOtp,
-            isRead: false,
-          },
-        },
-        { upsert: true },
-      );
-    } catch (notificationError) {
-      console.error("Notification Creation Error:", notificationError);
-    }
+    // Sets the delivery's partner/status/OTP/ETA, saves it, and creates the
+    // customer's "Delivery Partner Assigned" notification - the same logic
+    // used when a partner is auto-assigned as soon as an order goes "ready".
+    await applyPartnerAssignment({ delivery, order, deliveryPartner });
 
     return res.status(200).json({
       success: true,

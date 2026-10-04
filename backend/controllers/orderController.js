@@ -6,6 +6,10 @@ const Delivery = require("../models/Delivery");
 const crypto = require("crypto");
 const razorpay = require("../config/razorpay");
 const {
+  findLeastBusyDeliveryPartner,
+  applyPartnerAssignment,
+} = require("../services/deliveryAssignmentService");
+const {
   requesterId,
   isAdmin,
   isSameUser,
@@ -1021,6 +1025,30 @@ const updateOrderStatus = async (req, res) => {
         });
 
         console.log("Delivery record created:", delivery._id);
+
+        // =================================================
+        // AUTO-ASSIGN A DELIVERY PARTNER (round-robin by current load)
+        // Picks whichever delivery_partner account has the fewest active
+        // deliveries right now. If no delivery_partner account exists yet,
+        // the delivery is simply left "pending" for an admin to assign by
+        // hand later (today's existing manual flow, unchanged).
+        // =================================================
+
+        try {
+          const partner = await findLeastBusyDeliveryPartner();
+
+          if (partner) {
+            await applyPartnerAssignment({ delivery, order, deliveryPartner: partner });
+
+            console.log(
+              `Delivery ${delivery._id} auto-assigned to partner ${partner._id}`,
+            );
+          }
+        } catch (autoAssignError) {
+          // Order readiness must never fail because of this - the delivery
+          // just stays pending and an admin can still assign it manually.
+          console.error("Auto-Assign Delivery Partner Error:", autoAssignError);
+        }
       } else {
         delivery = existingDelivery;
       }
