@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Truck, LayoutDashboard, PackageCheck, User, LogOut } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "../customer/CustomerSidebar.css";
-import "./DeliverySidebar.css";
 import { useScrollableNav } from "../../hooks/useScrollableNav";
 
 const NAV_ITEMS = [
@@ -15,7 +14,7 @@ const NAV_ITEMS = [
 function DeliverySidebar() {
   const navRef = useRef(null);
   useScrollableNav(navRef);
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -28,17 +27,6 @@ function DeliverySidebar() {
       <div className="customer-sidebar-brand">
         <Truck size={22} />
         <span>HomeBite Delivery Panel</span>
-      </div>
-
-      <div className="delivery-profile-card">
-        <span className="delivery-avatar">
-          {user?.name?.trim()?.charAt(0)?.toUpperCase() || "?"}
-        </span>
-        <div className="delivery-profile-info">
-          <strong>{user?.name}</strong>
-          <span>Delivery Partner</span>
-          <span className="delivery-profile-email">{user?.email}</span>
-        </div>
       </div>
 
       <nav className="customer-sidebar-nav" ref={navRef}>
