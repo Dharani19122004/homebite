@@ -8,6 +8,7 @@ import {
   Star,
   ClipboardList,
   Flag,
+  MapPin,
 } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import { useLoader } from "../../hooks/useLoader";
@@ -151,6 +152,11 @@ function DeliveryDashboard() {
                           <span className="admin-cell-sub">
                             {d.vendorId?.businessName || "Store"} &bull; assigned{" "}
                             {formatDateTime(d.assignedAt)}
+                          </span>
+                          <span className="admin-cell-sub delivery-route-line">
+                            <MapPin size={11} /> {d.pickupAddress || "Pickup address unavailable"}
+                            {" "}&rarr;{" "}
+                            {d.deliveryAddress || "Drop address unavailable"}
                           </span>
                         </div>
                         <span className={getStatusBadgeClass(d.deliveryStatus)}>

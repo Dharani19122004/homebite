@@ -91,6 +91,20 @@
   min-width: 0;
 }
 
+.admin-cell-sub.delivery-route-line {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delivery-route-line svg {
+  flex-shrink: 0;
+  color: var(--color-primary-dark);
+}
+
 .delivery-report-list .admin-cell-sub:first-of-type {
   display: -webkit-box;
   -webkit-line-clamp: 2;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   MapPin,
+  Navigation,
   Phone,
   Store,
   User,
@@ -106,13 +107,19 @@ function DeliveryCard({ delivery, onChanged }) {
           <Store size={15} />
           <span>
             <strong>{delivery.vendorId?.businessName || "Store"}</strong>
-            {status === "assigned" && delivery.pickupAddress && (
-              <span className="admin-cell-sub">
-                Pickup: {delivery.pickupAddress}
-              </span>
-            )}
+            <span className="admin-cell-sub">Pickup location</span>
           </span>
         </p>
+
+        {inProgress && delivery.pickupAddress && (
+          <p>
+            <Navigation size={15} />
+            <span>
+              {delivery.pickupAddress}
+              <span className="admin-cell-sub">Pickup address</span>
+            </span>
+          </p>
+        )}
 
         <p>
           <User size={15} />
@@ -131,7 +138,10 @@ function DeliveryCard({ delivery, onChanged }) {
         {inProgress && (
           <p>
             <MapPin size={15} />
-            <span>{delivery.deliveryAddress}</span>
+            <span>
+              {delivery.deliveryAddress}
+              <span className="admin-cell-sub">Drop address</span>
+            </span>
           </p>
         )}
 
